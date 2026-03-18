@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from database import engine
 from models import Base
 import models
-from routers import users
+from routers import users, cases
 
 # creates all tables in PostgreSQL automatically
 Base.metadata.create_all(bind=engine)
@@ -10,6 +10,7 @@ Base.metadata.create_all(bind=engine)
 app = FastAPI(title="LawBridge API")
 
 app.include_router(users.router)
+app.include_router(cases.router)
 
 @app.get("/")
 def read_root():
