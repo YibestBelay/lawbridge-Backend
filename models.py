@@ -78,7 +78,7 @@ class User(Base):
     updated_at = Column(DateTime(timezone=True), onupdate=func.now())
 
     cases = relationship("Case", back_populates="client", foreign_keys="Case.client_id")
-    payments = relationship("Payment", back_populates="client")
+    payments = relationship("Payment", back_populates="client", foreign_keys="Payment.client_id")
     sent_messages = relationship("Message", back_populates="sender", foreign_keys="Message.sender_id")
     received_messages = relationship("Message", back_populates="receiver", foreign_keys="Message.receiver_id")
     notifications = relationship("Notification", back_populates="user")
