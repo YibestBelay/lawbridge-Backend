@@ -89,6 +89,13 @@ class PaymentCreate(BaseModel):
     notes: Optional[str] = None
 
 
+class PaymentUpdate(BaseModel):
+    status: Optional[PaymentStatus] = None
+    method: Optional[PaymentMethod] = None
+    paid_at: Optional[datetime] = None
+    notes: Optional[str] = None
+
+
 class PaymentResponse(BaseModel):
     id: uuid.UUID
     invoice_number: str
@@ -99,6 +106,8 @@ class PaymentResponse(BaseModel):
     status: PaymentStatus
     method: Optional[PaymentMethod] = None
     due_date: Optional[datetime] = None
+    paid_at: Optional[datetime] = None
+    notes: Optional[str] = None
     created_at: datetime
 
     model_config = {"from_attributes": True}
